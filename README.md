@@ -21,4 +21,4 @@ GasAbilities is a research and development project created to explore and test t
 This is an evolving project. Documentation will be updated regularly with new features and implementations.
 
 ## 📄 License
-This project is protected by copyright. See the LICENSE file for complete details.
+This project is protected by copyright. See the [LICENSE](LICENSE) file for complete details.
