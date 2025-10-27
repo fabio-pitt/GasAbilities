@@ -13,6 +13,7 @@ GasAbilities is a research and development project created to explore and test t
 `Unreal Engine 5.6`
 `JetBrains Rider`
 `C++ and Blueprint`
+`Git` `GitKraken Desktop`
 
 ## 📦 Contents
 (This section will be updated as the project develops)
