@@ -6,6 +6,9 @@
 #include "GameFramework/Character.h"
 #include "GasCharacterBase.generated.h"
 
+class UCameraComponent;
+class USpringArmComponent;
+
 /**
  * AGasCharacterBase is an **abstract** base class for all playable Characters in the project.
  * It establishes the core functionality and component structure inherited by all derived characters, 
@@ -17,6 +20,15 @@ UCLASS(Abstract, NotBlueprintable)
 class GASABILITIES_API AGasCharacterBase : public ACharacter
 {
 	GENERATED_BODY()
+
+protected:
+	// The Camera Arm Component that positions the camera relative to the character.
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = GAS_Camera, meta = (AllowPrivateAccess = "true"))
+	TObjectPtr<USpringArmComponent> CameraArmComponent;
+
+	// The Camera Component for the character that provides the player's viewpoint.
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = GAS_Camera, meta = (AllowPrivateAccess = "true"))
+	TObjectPtr<UCameraComponent> CameraComponent;
 
 public:
 	// Sets default values for this character's properties

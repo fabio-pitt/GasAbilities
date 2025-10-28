@@ -16,4 +16,8 @@ UCLASS()
 class GASABILITIES_API AGasGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
+
+public:
+	// Sets default values for this game mode's properties
+	AGasGameMode();
 };
