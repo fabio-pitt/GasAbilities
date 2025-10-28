@@ -16,7 +16,12 @@ GasAbilities is a research and development project created to explore and test t
 `Git` `GitKraken Desktop`
 
 ## 📦 Contents
-(This section will be updated as the project develops)
+### Epic Games
+This project includes the following third-party content from **Epic Games**:
+- **Third Person Template**: Characters, animations, and related assets from Unreal Engine's Third Person template
+- **Starter Content**: Sample audio, particles, materials, and other assets from Unreal Engine's Starter Content pack
+
+All Epic Games content is used under the [Unreal Engine EULA](https://www.unrealengine.com/en-US/eula/unreal) and is subject to Epic Games' licensing terms.
 
 ## 📝 Development Notes
 This is an evolving project. Documentation will be updated regularly with new features and implementations.
