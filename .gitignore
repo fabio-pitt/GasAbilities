@@ -76,3 +76,6 @@ DerivedDataCache/*
 
 # JetBrains Rider IDE compiler user specific files
 .idea
+
+# Ignore ReSharper/IDE user settings
+*.DotSettings.user
