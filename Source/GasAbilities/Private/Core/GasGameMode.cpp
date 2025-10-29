@@ -22,7 +22,7 @@ AGasGameMode::AGasGameMode()
 	// If the Blueprint class is found, set it as the default player controller class
 	if (PlayerControllerBPClass.Class != nullptr)
 	{
-		PlayerControllerClass = PlayerPawnBPClass.Class;
+		PlayerControllerClass = PlayerControllerBPClass.Class;
 	}
 	else UE_LOG(LogTemp, Warning, TEXT("PlayerController class not found"));
 }
