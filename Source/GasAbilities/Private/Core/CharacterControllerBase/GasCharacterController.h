@@ -36,7 +36,7 @@ public:
 
 	// Input action for looking around
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = GAS_Input, meta = (AllowPrivateAccess = true))
-	TObjectPtr<UInputAction> LockAction;
+	TObjectPtr<UInputAction> LookAction;
 
 	// Input action for moving
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = GAS_Input, meta = (AllowPrivateAccess = true))

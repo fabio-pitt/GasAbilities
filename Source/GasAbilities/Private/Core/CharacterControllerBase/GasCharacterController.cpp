@@ -18,7 +18,7 @@ void AGasCharacterController::SetupInputComponent()
 	if (EnhancedInputComponent)
 	{
 		// Look
-		EnhancedInputComponent->BindAction(LockAction.Get(), ETriggerEvent::Triggered, this, &AGasCharacterController::Look);
+		EnhancedInputComponent->BindAction(LookAction.Get(), ETriggerEvent::Triggered, this, &AGasCharacterController::Look);
 
 		// Move
 		EnhancedInputComponent->BindAction(MoveAction.Get(), ETriggerEvent::Triggered, this, &AGasCharacterController::Move);
