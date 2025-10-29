@@ -3,8 +3,13 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/Character.h"
+#include "GameFramework/PlayerController.h"
+#include "InputMappingContext.h"
+#include "InputAction.h"
 #include "GasCharacterController.generated.h"
+
+class AGasCharacterBase;
+struct FInputActionValue;
 
 /**
  * AGasCharacterController is the Player Controller used for the main playable character in the project.
@@ -14,22 +19,51 @@
  * while also setting up the initial Player State and HUD for the GAS environment.
  */
 UCLASS()
-class GASABILITIES_API AGasCharacterController : public ACharacter
+class GASABILITIES_API AGasCharacterController : public APlayerController
 {
 	GENERATED_BODY()
 
 public:
-	// Sets default values for this character's properties
-	AGasCharacterController();
+	// The Input Mapping Context that defines the input scheme for the character.
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = GAS_Input, meta = (AllowPrivateAccess = true))
+	TObjectPtr<UInputMappingContext> CurrentMappingContext;
 
-protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
+	// Reference to the current Gas Character Base controlled by this controller.
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = GAS_Input, meta = (AllowPrivateAccess = true))
+	TObjectPtr<AGasCharacterBase> CurrentCharacter;
+
+	/// Declare input actions for movement and looking around
+
+	// Input action for looking around
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = GAS_Input, meta = (AllowPrivateAccess = true))
+	TObjectPtr<UInputAction> LockAction;
+
+	// Input action for moving
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = GAS_Input, meta = (AllowPrivateAccess = true))
+	TObjectPtr<UInputAction> MoveAction;
+
+	// Input action for jumping
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = GAS_Input, meta = (AllowPrivateAccess = true))
+	TObjectPtr<UInputAction> JumpAction;
 
 public:
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
-
 	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+	virtual void SetupInputComponent() override;
+
+	// Called when the controlled is possessing a pawn
+	virtual void OnPossess(APawn* InPawn) override;
+
+	/// Input actions handlers
+
+	// Handler for Look action
+	void Look(const FInputActionValue& Value);
+
+	// Handler for Move action
+	void Move(const FInputActionValue& Value);
+
+	// Handler for Jump action start
+	void JumpStart();
+
+	// Handler for Jump action stop
+	void JumpStop();
 };
