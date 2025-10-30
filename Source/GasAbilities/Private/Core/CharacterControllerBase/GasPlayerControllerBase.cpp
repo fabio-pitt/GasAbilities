@@ -1,12 +1,12 @@
 ﻿// GasAbilities © 2025 Fabio Pittaccio. All Rights Reserved. Personal, non-commercial use only. See LICENSE and README for details.
 
-#include "GasCharacterController.h"
+#include "GasPlayerControllerBase.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "Core/CharacterBase/GasCharacterBase.h"
 
 // Setup input component
-void AGasCharacterController::SetupInputComponent()
+void AGasPlayerControllerBase::SetupInputComponent()
 {
 	Super::SetupInputComponent();
 
@@ -18,19 +18,19 @@ void AGasCharacterController::SetupInputComponent()
 	if (EnhancedInputComponent)
 	{
 		// Look
-		EnhancedInputComponent->BindAction(LookAction.Get(), ETriggerEvent::Triggered, this, &AGasCharacterController::Look);
+		EnhancedInputComponent->BindAction(LookAction.Get(), ETriggerEvent::Triggered, this, &AGasPlayerControllerBase::Look);
 
 		// Move
-		EnhancedInputComponent->BindAction(MoveAction.Get(), ETriggerEvent::Triggered, this, &AGasCharacterController::Move);
+		EnhancedInputComponent->BindAction(MoveAction.Get(), ETriggerEvent::Triggered, this, &AGasPlayerControllerBase::Move);
 
 		// The Jump action has two events: Started and Completed
-		EnhancedInputComponent->BindAction(JumpAction.Get(), ETriggerEvent::Started, this, &AGasCharacterController::JumpStart);
-		EnhancedInputComponent->BindAction(JumpAction.Get(), ETriggerEvent::Completed, this, &AGasCharacterController::JumpStop);
+		EnhancedInputComponent->BindAction(JumpAction.Get(), ETriggerEvent::Started, this, &AGasPlayerControllerBase::JumpStart);
+		EnhancedInputComponent->BindAction(JumpAction.Get(), ETriggerEvent::Completed, this, &AGasPlayerControllerBase::JumpStop);
 	}
 }
 
 // Called when possessing a pawn
-void AGasCharacterController::OnPossess(APawn* InPawn)
+void AGasPlayerControllerBase::OnPossess(APawn* InPawn)
 {
 	Super::OnPossess(InPawn);
 
@@ -51,7 +51,7 @@ void AGasCharacterController::OnPossess(APawn* InPawn)
 /// Input action handlers implementation
 
 // Handle look input
-void AGasCharacterController::Look(const FInputActionValue& Value)
+void AGasPlayerControllerBase::Look(const FInputActionValue& Value)
 {
 	// Get the look axis vector from the input value
 	const FVector2d LookAxisVector = Value.Get<FVector2d>();
@@ -62,7 +62,7 @@ void AGasCharacterController::Look(const FInputActionValue& Value)
 }
 
 // Handle move input
-void AGasCharacterController::Move(const FInputActionValue& Value)
+void AGasPlayerControllerBase::Move(const FInputActionValue& Value)
 {
 	// Get the movement vector from the input value
 	const FVector2d MovementVector = Value.Get<FVector2d>();
@@ -81,13 +81,13 @@ void AGasCharacterController::Move(const FInputActionValue& Value)
 }
 
 // Handle jump input start
-void AGasCharacterController::JumpStart()
+void AGasPlayerControllerBase::JumpStart()
 {
 	this->CurrentCharacter->Jump();
 }
 
 // Handle jump input stop
-void AGasCharacterController::JumpStop()
+void AGasPlayerControllerBase::JumpStop()
 {
 	this->CurrentCharacter->StopJumping();
 }

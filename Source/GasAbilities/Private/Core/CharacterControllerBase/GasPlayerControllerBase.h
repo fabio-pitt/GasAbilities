@@ -6,20 +6,20 @@
 #include "GameFramework/PlayerController.h"
 #include "InputMappingContext.h"
 #include "InputAction.h"
-#include "GasCharacterControllerBase.generated.h"
+#include "GasPlayerControllerBase.generated.h"
 
 class AGasCharacterBase;
 struct FInputActionValue;
 
 /**
- * AGasCharacterController is the Player Controller used for the main playable character in the project.
- * It is responsible for handling player input and **binding Ability inputs** to the 
- * Character's Gameplay Ability System (GAS). 
- * This controller manages the flow of commands and replication necessary for the player to utilize Abilities,
- * while also setting up the initial Player State and HUD for the GAS environment.
+ * AGasPlayerControllerBase is an **abstract** base class for Controllers used in the GAS project.
+ * It provides the fundamental architecture for handling input, establishing necessary replication, 
+ * and defining methods for future interaction with the Ability System Component (ASC). 
+ * This class ensures a standardized starting point for all derived Player Controllers 
+ * within the Gameplay Ability System framework.
  */
 UCLASS()
-class GASABILITIES_API AGasCharacterControllerBase : public APlayerController
+class GASABILITIES_API AGasPlayerControllerBase : public APlayerController
 {
 	GENERATED_BODY()
 
