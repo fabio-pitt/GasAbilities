@@ -6,7 +6,7 @@
 #include "GameFramework/PlayerController.h"
 #include "InputMappingContext.h"
 #include "InputAction.h"
-#include "GasCharacterController.generated.h"
+#include "GasCharacterControllerBase.generated.h"
 
 class AGasCharacterBase;
 struct FInputActionValue;
@@ -19,7 +19,7 @@ struct FInputActionValue;
  * while also setting up the initial Player State and HUD for the GAS environment.
  */
 UCLASS()
-class GASABILITIES_API AGasCharacterController : public APlayerController
+class GASABILITIES_API AGasCharacterControllerBase : public APlayerController
 {
 	GENERATED_BODY()
 
